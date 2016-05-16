@@ -1,0 +1,103 @@
+<div class="row" ng-controller="myController">
+    <div class="col-xs-12 col-md-3">
+        <div>
+
+            <div style="margin:10px 0 30px 0; padding:10px; background-color:#EEEEEE; border-radius:5px; font:12px Tahoma;">
+                <span><b>Selected Node</b> : {{currentNode.Category}}</span>
+                <br>
+                <span><b>Selected id</b> : {{currentNode.categoryId}}</span>
+            </div>
+
+            <!--
+              [TREE attribute]
+              angular-treeview: the treeview directive
+              tree-model : the tree model on $scope.
+              node-id : each node's id
+              node-label : each node's label
+              node-children: each node's children
+            -->
+            <div
+                    data-angular-treeview="true"
+                    data-tree-model="roleList"
+                    data-node-id="roleId"
+                    data-node-label="Category"
+                    data-node-children="children">
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-md-9">
+
+     <div class="row">
+         <div class="col-xs-12 col-md-5">
+             <div ng-if="currentNode.imgUrl != undefined ">
+                 <img class="img-fluid" src="{{currentNode.imgUrl}}" alt="{{currentNode.Category}}">
+             </div>
+
+             <div ng-if="currentNode.imgUrl == undefined ">
+                 Выберите подкатегорию
+             </div>
+         </div>
+         <div class="col-xs-12 col-md-7">
+             <h3>{{currentNode.Category}}</h3>
+             <p>Описнаие: {{currentNode.description}}</p>
+             <p>Прайс: {{currentNode.price}}</p>
+             <p>Id Категории {{currentNode.categoryId}}</p>
+
+             <a class="btn btn-success" ng-click="delete(currentNode)" >Удалить</a>
+         </div>
+     </div>
+
+    </div>
+
+    <div class="row p-y-3">
+        <div class="col-xs-12 col-md-12">
+            <div class="page-header">
+                <h3> Добавить товар </h3>
+            </div>
+            <div class="panel">
+                <div class="form-inline p-y-2">
+                    <div class="form-group p-y-1">
+                        <div class="col-md-8">
+                            <input class="form-control" ng-model="Category" placeholder="Название"/>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group p-y-1">
+                        <div class="col-md-6">
+                            <input type="number" class="form-control" ng-model="price" placeholder="Цена"/>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group p-y-1">
+                        <div class="col-md-6">
+                            <input type="number" class="form-control" ng-model="categoryId" placeholder="categoryId"/>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group p-y-1">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" ng-model="description" placeholder="description"/>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group p-y-1">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" ng-model="imgUrl" placeholder="imgUrl"/>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group p-y-1">
+                        <button class="btn btn-primary m-x-1" ng-click="addItem(Category, price,categoryId,description,imgUrl)">Добавить</button>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+

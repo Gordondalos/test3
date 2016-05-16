@@ -1,49 +1,4 @@
 'use strict';
-'use strict';
-
-var myApp = angular.module('myApp', [
-    'ngRoute',
-    'angularTreeview',
-
-
-
-]);
-myApp.config(['$routeProvider', function($routeProvide){
-
-    $routeProvide
-        .when ('/',{
-        templateUrl:'templates/product.html',
-        controller: 'myController'
-    })
-        .when ('/one',{
-        templateUrl:'templates/one.html',
-        controller: 'myController'
-    })
-        .when ('/two',{
-        templateUrl:'templates/one.html',
-
-    })
-        .when ('/three',{
-        templateUrl:'view/three.html',
-        controller: 'threeCtrl'
-    })
-        .otherwise({
-            redirectTo: '/'
-        });
-}])
-'use strict';
-
-/* Services */
-
-var myTestAppServices = angular.module('myTestAppServices', ['ngResource']);
-
-myTestAppServices.factory('DropTable', ['$resource',
-    function($resource){
-        return $resource('phones/:phoneId.json', {}, {
-            query: {method:'GET', params:{phoneId:'phones'}, isArray:true}
-        });
-    }]);
-'use strict';
 (function(){
 
     //test controller
